@@ -125,19 +125,19 @@ int Manager::neighbors(int x, int y)
 
 	if      (cpy[x - 1][y - 1].get_Life() == true)
 		counter++;
-	else if (cpy[x - 1][y].get_Life() == true)
+	if (cpy[x - 1][y].get_Life() == true)
 		counter++;
-	else if (cpy[x - 1][y + 1].get_Life() == true)
+	if (cpy[x - 1][y + 1].get_Life() == true)
 		counter++;
-	else if (cpy[x]    [y + 1].get_Life() == true)
+	if (cpy[x]    [y + 1].get_Life() == true)
 		counter++;
-	else if (cpy[x]    [y - 1].get_Life() == true)
+	if (cpy[x]    [y - 1].get_Life() == true)
 		counter++;
-	else if (cpy[x + 1][y].get_Life() == true)
+	if (cpy[x + 1][y].get_Life() == true)
 		counter++;
-	else if (cpy[x + 1][y + 1].get_Life() == true)
+	if (cpy[x + 1][y + 1].get_Life() == true)
 		counter++;
-	else if (cpy[x + 1][y - 1].get_Life() == true)
+	if (cpy[x + 1][y - 1].get_Life() == true)
 		counter++;
 
 	return counter;
