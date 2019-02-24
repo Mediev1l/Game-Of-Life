@@ -10,6 +10,7 @@ void Game::Start()
 	Game::add_cell(4, 3);
 	Game::add_cell(4, 4);
 	Game::add_cell(4, 5);
+	Draw();
 	Game::analize();
 	Draw();
 

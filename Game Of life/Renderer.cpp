@@ -2,11 +2,11 @@
 
 void Renderer::Draw()
 {
-	for (int i = 0; i < Game::m_width; i++)
+	for (int i = 0; i < Game::m_height; i++)
 	{
-		for (int j = 0; j < Game::m_height; j++)
+		for (int j = 0; j < Game::m_width; j++)
 		{
-			if (i == 0 || i == Game::m_width - 1 || j == 0 || j == Game::m_height - 1)
+			if (i == 0 || i == Game::m_height - 1 || j == 0 || j == Game::m_width - 1)
 				std::cout << "#";
 			else if (Game::m_Cells[i][j].get_Life() == true)
 				std::cout << "o";

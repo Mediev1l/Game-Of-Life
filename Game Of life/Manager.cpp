@@ -101,11 +101,12 @@ int Manager::get_height()
 
 void Manager::analize()
 {
-
-	for (int i = 1; i < m_height - 2; i++)
+	
+	copy();
+	for (int i = 1; i < m_height - 1; i++)
 	{
 
-		for (int j = 1; j < m_width - 2; j++)
+		for (int j = 1; j < m_width - 1; j++)
 		{
 			if (neighbors(i, j) >= m_birth && neighbors(i, j) < m_death)
 				m_Cells[i][j].set_Life(true);
@@ -120,8 +121,7 @@ void Manager::analize()
 int Manager::neighbors(int x, int y)
 {
 	int counter = 0;
-	//copy(cpy);
-	std::cout << m_Cells[0][0].get_Life();
+
 
 	if      (cpy[x - 1][y - 1].get_Life() == true)
 		counter++;
@@ -153,7 +153,6 @@ void Manager::copy()
 	{
 		cpy[i] = new Cell[m_height];
 		memcpy(cpy[i], m_Cells[i], m_height * sizeof(Cell));
-
 	}
 
 
