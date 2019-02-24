@@ -1,13 +1,19 @@
 #include "Manager.h"
 
 Manager::Manager()
-	:m_Cells(NULL), m_width(0), m_height(0), m_birth(0), m_death(0), m_cycle(0)
+	:m_Cells(nullptr),cpy(nullptr), m_width(0), m_height(0), m_birth(0), m_death(0), m_cycle(0)
 {
 
 	 m_Cells = new Cell*[m_width];
 	
 	 for (int i = 0; i < m_width; i++)
 		 m_Cells[i] = new Cell[m_height];
+
+
+	 cpy = new Cell*[m_width];
+
+	 for (int i = 0; i < m_width; i++)
+		 cpy[i] = new Cell[m_height];
 }
 
 Manager::~Manager()
@@ -27,7 +33,7 @@ void Manager::set_Parameters(int width, int height, int birth, int death, int cy
 
 	m_Cells = new Cell*[m_width];
 
-	for (int i = 0; i < m_width - 1; i++)
+	for (int i = 0; i < m_width; i++)
 		m_Cells[i] = new Cell[m_height];
 
 
@@ -51,7 +57,7 @@ void Manager::init()
 
 	file.open("Init.init");
 
-	if (file.good())
+	if (!file.good())
 		std::cerr << "[ERROR] Couldn't load the \"Init.init\" file" << std::endl;
 
 	
@@ -114,8 +120,8 @@ void Manager::analize()
 int Manager::neighbors(int x, int y)
 {
 	int counter = 0;
-	Cell** cpy = new Cell*[0];
-	copy(cpy);
+	//copy(cpy);
+	std::cout << m_Cells[0][0].get_Life();
 
 	if      (cpy[x - 1][y - 1].get_Life() == true)
 		counter++;
@@ -138,12 +144,17 @@ int Manager::neighbors(int x, int y)
 
 }		
 
-void Manager::copy(Cell** cpy)
+void Manager::copy()
 {
 	
 	cpy = new Cell*[m_width];
 
 	for (int i = 0; i < m_width; i++)
-		memcpy(cpy[i], m_Cells[i], sizeof(Cell));
-		
+	{
+		cpy[i] = new Cell[m_height];
+		memcpy(cpy[i], m_Cells[i], m_height * sizeof(Cell));
+
+	}
+
+
 }

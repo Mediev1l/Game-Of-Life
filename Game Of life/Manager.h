@@ -14,6 +14,7 @@ class Manager
 {
 protected:
 	Cell** m_Cells;
+	Cell** cpy;
 	int m_width;
 	int m_height;
 
@@ -35,7 +36,7 @@ public:
 
 	void analize();
 	int neighbors(int x, int y);
-	void copy(Cell** cpy);
+	void copy();
 
 
 

@@ -12,6 +12,9 @@ public:
 	Game();
 
 	void Start();
+	void Update();
+	void Logic();
+	void Input();
 	virtual void Draw() = 0;
 
 };
