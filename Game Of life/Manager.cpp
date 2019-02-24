@@ -23,13 +23,14 @@ Manager::~Manager()
 	delete[] m_Cells;
 }
 
-void Manager::set_Parameters(int width, int height, int birth, int death, int cycle)
+void Manager::set_Parameters(int width, int height, int birth, int death, int cycle, bool slant)
 {
 	m_width = width;
 	m_height = height;
 	m_birth = birth;
 	m_death = death;
 	m_cycle = cycle;
+	m_slant = slant;
 
 	m_Cells = new Cell*[m_width];
 
@@ -84,7 +85,7 @@ void Manager::init()
 
 
 	
-	set_Parameters( stoi( stream[0].str() ), stoi( stream[1].str() ), stoi(stream[2].str()), stoi(stream[3].str()), stoi(stream[4].str()));
+	set_Parameters( stoi( stream[0].str() ), stoi( stream[1].str() ), stoi(stream[2].str()), stoi(stream[3].str()), stoi(stream[4].str()), to_Bool(stream[5].str()));
 
 }
 
@@ -126,22 +127,24 @@ int Manager::neighbors(int x, int y)
 {
 	int counter = 0;
 
-
-	if      (cpy[x - 1][y - 1].get_Life() == true)
-		counter++;
+	if (m_slant == true)
+	{
+		if (cpy[x - 1][y - 1].get_Life() == true)
+			counter++;
+		if (cpy[x - 1][y + 1].get_Life() == true)
+			counter++;
+		if (cpy[x + 1][y + 1].get_Life() == true)
+			counter++;
+		if (cpy[x + 1][y - 1].get_Life() == true)
+			counter++;
+	}
 	if (cpy[x - 1][y].get_Life() == true)
-		counter++;
-	if (cpy[x - 1][y + 1].get_Life() == true)
 		counter++;
 	if (cpy[x]    [y + 1].get_Life() == true)
 		counter++;
 	if (cpy[x]    [y - 1].get_Life() == true)
 		counter++;
 	if (cpy[x + 1][y].get_Life() == true)
-		counter++;
-	if (cpy[x + 1][y + 1].get_Life() == true)
-		counter++;
-	if (cpy[x + 1][y - 1].get_Life() == true)
 		counter++;
 	if (cpy[x][y].get_Life() == true)
 		counter++;
@@ -161,5 +164,14 @@ void Manager::copy()
 		memcpy(cpy[i], m_Cells[i], m_height * sizeof(Cell));
 	}
 
+
+}
+
+bool Manager::to_Bool(std::string str)
+{
+	if (str == "true" || str == "TRUE" || str == "True")
+		return true;
+	else
+		return false;
 
 }

@@ -28,7 +28,7 @@ public:
 	Manager();
 	~Manager();
 
-	void set_Parameters(int width, int height, int birth, int death, int cycle);
+	void set_Parameters(int width, int height, int birth, int death, int cycle, bool slant);
 	void add_cell(int x, int y);
 	void init();
 
@@ -39,6 +39,8 @@ public:
 	void analize();
 	int neighbors(int x, int y);
 	void copy();
+
+	bool to_Bool(std::string str);
 
 
 

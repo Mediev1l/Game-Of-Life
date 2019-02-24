@@ -5,6 +5,7 @@
 
 #include "Manager.h"
 #include "Input.h"
+#include <Windows.h>
 
 class Game : public Manager, public Input
 {
