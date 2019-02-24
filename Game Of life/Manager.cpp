@@ -42,7 +42,8 @@ void Manager::set_Parameters(int width, int height, int birth, int death, int cy
 
 void Manager::add_cell(int x, int y)
 {
-	if (m_width > x && m_height > y)
+	//if (m_width < x && m_height < y)
+	if(x > 0 && x < m_width && y > 0 && y < m_height)
 		m_Cells[x][y].set_Life(true);
 
 }
@@ -115,6 +116,8 @@ void Manager::analize()
 		{
 			if (neighbors(i, j) >= m_birth && neighbors(i, j) < m_death)
 				m_Cells[i][j].set_Life(true);
+			//else if (m_Cells[i][j].get_Life() == true && neighbors(i,j) < m_birth)
+			//	m_Cells[i][j].set_Life(true);
 			else
 				m_Cells[i][j].set_Life(false);
 
