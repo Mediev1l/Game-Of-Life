@@ -22,6 +22,8 @@ protected:
 	int m_death;
 	int m_cycle;
 
+	bool m_slant;
+
 public:
 	Manager();
 	~Manager();

@@ -1,7 +1,7 @@
 #include "Manager.h"
 
 Manager::Manager()
-	:m_Cells(nullptr),cpy(nullptr), m_width(0), m_height(0), m_birth(0), m_death(0), m_cycle(0)
+	:m_Cells(nullptr),cpy(nullptr), m_width(0), m_height(0), m_birth(0), m_death(0), m_cycle(0), m_slant(false)
 {
 
 	 m_Cells = new Cell*[m_width];
@@ -48,8 +48,8 @@ void Manager::add_cell(int x, int y)
 
 void Manager::init()
 {
-	enum setter { Default = -1, Width = 0, Height = 1, Birth = 2, Death = 3, Cycle = 4 };
-	std::stringstream stream[5];
+	enum setter { Default = -1, Width = 0, Height = 1, Birth = 2, Death = 3, Cycle = 4, Slant = 5 };
+	std::stringstream stream[6];
 	std::fstream file;
 	std::string line;
 	setter mode = Default;
@@ -75,11 +75,15 @@ void Manager::init()
 				mode = Death;
 			else if (line.find("Cycle") != std::string::npos)
 				mode = Cycle;
+			else if (line.find("Slant") != std::string::npos)
+				mode = Slant;
 		}
 		else if (line != "")
 			stream[(int)mode] << line;
 	}
 
+
+	
 	set_Parameters( stoi( stream[0].str() ), stoi( stream[1].str() ), stoi(stream[2].str()), stoi(stream[3].str()), stoi(stream[4].str()));
 
 }
@@ -138,6 +142,8 @@ int Manager::neighbors(int x, int y)
 	if (cpy[x + 1][y + 1].get_Life() == true)
 		counter++;
 	if (cpy[x + 1][y - 1].get_Life() == true)
+		counter++;
+	if (cpy[x][y].get_Life() == true)
 		counter++;
 
 	return counter;

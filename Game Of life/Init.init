@@ -5,10 +5,13 @@
 10
 
 #Settings: Birth
-2
+3
 
 #Settings: Death
 5
 
 #Settings: Cycle
 20
+
+#Settings: Slant
+true
