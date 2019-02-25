@@ -1,14 +1,14 @@
 #Settings: Init_X
-20
+40
 
 #Settings: Init_Y
-10
+20
 
 #Settings: Birth
-2
+3
 
 #Settings: Death
-3
+5
 
 #Settings: Cycle
 20

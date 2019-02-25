@@ -4,16 +4,16 @@ Manager::Manager()
 	:m_Cells(nullptr),cpy(nullptr), m_width(0), m_height(0), m_birth(0), m_death(0), m_cycle(0), m_slant(false)
 {
 
-	 m_Cells = new Cell*[m_width];
-	
-	 for (int i = 0; i < m_width; i++)
-		 m_Cells[i] = new Cell[m_height];
-
-
-	 cpy = new Cell*[m_width];
-
-	 for (int i = 0; i < m_width; i++)
-		 cpy[i] = new Cell[m_height];
+	//m_Cells = new Cell*[m_width];
+	//cpy = new Cell*[m_width];
+	//
+	// for (int i = 0; i < m_width; i++)
+	//	 m_Cells[i] = new Cell[m_height];
+	//
+	//
+	//
+	// for (int i = 0; i < m_width; i++)
+	//	 cpy[i] = new Cell[m_height];
 }
 
 Manager::~Manager()
@@ -21,6 +21,13 @@ Manager::~Manager()
 	for (int i = 0; i < m_width; i++)
 		delete[] m_Cells[i];
 	delete[] m_Cells;
+	
+	for (int i = 0; i < m_width; i++)
+		delete[] cpy[i];
+	delete[] cpy;
+
+
+
 }
 
 void Manager::set_Parameters(int width, int height, int birth, int death, int cycle, bool slant)

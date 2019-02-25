@@ -26,7 +26,7 @@ protected:
 
 public:
 	Manager();
-	~Manager();
+	virtual ~Manager();
 
 	void set_Parameters(int width, int height, int birth, int death, int cycle, bool slant);
 	void add_cell(int x, int y);
