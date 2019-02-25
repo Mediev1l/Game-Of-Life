@@ -20,7 +20,6 @@ protected:
 
 	int m_birth;
 	int m_death;
-	int m_cycle;
 
 	bool m_slant;
 
@@ -28,7 +27,7 @@ public:
 	Manager();
 	virtual ~Manager();
 
-	void set_Parameters(int width, int height, int birth, int death, int cycle, bool slant);
+	void set_Parameters(int width, int height, int birth, int death, bool slant);
 	void add_cell(int x, int y);
 	void init();
 	void analize();
@@ -36,7 +35,6 @@ public:
 
 	int get_width();
 	int get_height();
-	int get_cpy_lifeTime(int x, int y);
 	int neighbors(int x, int y);
 
 
