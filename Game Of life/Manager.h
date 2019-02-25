@@ -31,17 +31,18 @@ public:
 	void set_Parameters(int width, int height, int birth, int death, int cycle, bool slant);
 	void add_cell(int x, int y);
 	void init();
+	void analize();
+	void copy();
 
-	Cell get_Cell(int x, int y);
 	int get_width();
 	int get_height();
-
-	void analize();
+	int get_cpy_lifeTime(int x, int y);
 	int neighbors(int x, int y);
-	void copy();
+
 
 	bool to_Bool(std::string str);
 
+	Cell get_Cell(int x, int y);
 
 
 };

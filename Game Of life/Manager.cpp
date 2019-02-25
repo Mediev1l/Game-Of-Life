@@ -112,6 +112,11 @@ int Manager::get_height()
 	return m_height;
 }
 
+int Manager::get_cpy_lifeTime(int x, int y)
+{
+	return cpy[x][y].get_LifeTime();
+}
+
 void Manager::analize()
 {
 	
@@ -122,10 +127,20 @@ void Manager::analize()
 		for (int j = 1; j < m_height - 1; j++)
 		{
 			if (neighbors(i, j) >= m_birth && neighbors(i, j) < m_death)
+			{
 				m_Cells[i][j].set_Life(true);
-			//else if (m_Cells[i][j].get_Life() == true && neighbors(i,j) < m_birth)
-			//	m_Cells[i][j].set_Life(true);
-			else
+				m_Cells[i][j].reset_LifeTime();
+			}
+			else if (get_cpy_lifeTime(i,j) >= m_cycle - 1)
+			{
+				m_Cells[i][j].set_Life(false);
+				m_Cells[i][j].reset_LifeTime();
+			}
+			else if (neighbors(i, j) < m_birth)
+			{
+				m_Cells[i][j].increment_LifeTime();
+			}
+			else 
 				m_Cells[i][j].set_Life(false);
 
 		}
