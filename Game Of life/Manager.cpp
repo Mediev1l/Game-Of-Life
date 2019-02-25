@@ -109,10 +109,10 @@ void Manager::analize()
 {
 	
 	copy();
-	for (int i = 1; i < m_height - 1; i++)
+	for (int i = 1; i < m_width - 1; i++)
 	{
 
-		for (int j = 1; j < m_width - 1; j++)
+		for (int j = 1; j < m_height - 1; j++)
 		{
 			if (neighbors(i, j) >= m_birth && neighbors(i, j) < m_death)
 				m_Cells[i][j].set_Life(true);

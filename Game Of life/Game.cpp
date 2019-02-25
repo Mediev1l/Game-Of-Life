@@ -17,7 +17,7 @@ void Game::Start()
 	Game::add_cell(10, 8);
 	Game::add_cell(10, 9);
 	Game::add_cell(10, 10);
-
+	
 
 	while (1)
 	{
@@ -26,7 +26,7 @@ void Game::Start()
 		Game::analize();
 		Sleep(1000);
 	}
-
+	
 
 
 }
