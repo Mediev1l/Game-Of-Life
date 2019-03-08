@@ -32,6 +32,7 @@ public:
 	void init();
 	void analize();
 	void copy();
+	void clear();
 
 	int get_width();
 	int get_height();

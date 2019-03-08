@@ -12,22 +12,18 @@ Manager::Manager()
 	//
 	//
 	//
-	// for (int i = 0; i < m_width; i++)
+	//for (int i = 0; i < m_width; i++)
 	//	 cpy[i] = new Cell[m_height];
 }
 
 Manager::~Manager()
 {
+	clear();
+
 	for (int i = 0; i < m_width; i++)
 		delete[] m_Cells[i];
 	delete[] m_Cells;
-	
-	for (int i = 0; i < m_width; i++)
-		delete[] cpy[i];
-	delete[] cpy;
-
-
-
+	   
 }
 
 void Manager::set_Parameters(int width, int height, int birth, int death, bool slant)
@@ -128,6 +124,17 @@ void Manager::analize()
 	}
 }
 
+void Manager::clear()
+{
+	if (m_width != 0 && m_height != 0)
+	{
+		for (int i = 0; i < m_width; i++)
+			delete[] cpy[i];
+		delete[] cpy;
+	}
+
+}
+
 int Manager::neighbors(int x, int y)
 {
 	int counter = 0;
@@ -160,7 +167,9 @@ int Manager::neighbors(int x, int y)
 
 void Manager::copy()
 {
-	
+	if (cpy != nullptr)
+		clear();
+
 	cpy = new Cell*[m_width];
 
 	for (int i = 0; i < m_width; i++)

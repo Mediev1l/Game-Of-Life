@@ -19,8 +19,8 @@ void Game::Start()
 	Game::add_cell(10, 9);
 	Game::add_cell(10, 10);
 
-	for (int i = 0; i < (Game::m_width * Game::m_height) / 100; i++)
-		Game::add_cell(rand() % Game::get_width(), rand() % Game::get_height());
+	//for (int i = 0; i < (Game::m_width * Game::m_height) / 100; i++)
+	//	Game::add_cell(rand() % Game::get_width(), rand() % Game::get_height());
 
 
 	
@@ -30,7 +30,7 @@ void Game::Start()
 		system("cls");
 		Draw();
 		Game::analize();
-		Sleep(1000);
+		Sleep(100);
 	}
 	
 
